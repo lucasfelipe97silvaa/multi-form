@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import * as C from './styled';
 import {Header} from '../Header';
 import { SidebarItem } from '../SidebarItem';
+import {useForm} from '../../contexts/FormContext'
  
 type Props = {
     children: ReactNode;
@@ -9,6 +10,8 @@ type Props = {
 }
 
 export const Theme = ({ children }: Props) =>{
+        const { state } = useForm();
+
     return (
         <C.Conteiner>
             <C.Area>
@@ -22,6 +25,7 @@ export const Theme = ({ children }: Props) =>{
                             description="Se identifique"
                             icon="profile "
                             path="/"
+                            active={state.currentStep === 1 }
                         />
 
                         <SidebarItem
@@ -29,6 +33,7 @@ export const Theme = ({ children }: Props) =>{
                             description="Seu nível"
                             icon="bool"
                             path="/step2"
+                            active={state.currentStep === 2 }
                         />
 
                         <SidebarItem
@@ -36,6 +41,7 @@ export const Theme = ({ children }: Props) =>{
                             description="Como te achar"
                             icon="mail"
                             path="/step3"
+                            active={state.currentStep === 3 }
                         />
                     </C.Sidebar>
                     <C.Page>

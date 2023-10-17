@@ -9,10 +9,11 @@ type Props = {
     description: string;
     icon: string;
     path: string;
+    active: boolean;
 }
 
 
-export const SidebarItem = ({ title, description, icon, path }: Props) => {
+export const SidebarItem = ({ title, description, icon, path, active }: Props) => {
     return (
         <C.Container>
             <Link to={path}>
@@ -20,7 +21,7 @@ export const SidebarItem = ({ title, description, icon, path }: Props) => {
                     <C.Title>{title}</C.Title>
                     <C.Description>{description}</C.Description>
                 </C.Info>
-                <C.IconArea>
+                <C.IconArea active={active}>
                     {icon === 'profile' &&
                         <ProfileIcon fill="white" width={24} height={24}/>
                     }
@@ -31,7 +32,7 @@ export const SidebarItem = ({ title, description, icon, path }: Props) => {
                         <MailIcon fill="white" width={24} height={24}/>
                     }
                 </C.IconArea>
-                <C.Point></C.Point>
+                <C.Point active={active}></C.Point>
             </Link>
         </C.Container>
     );
